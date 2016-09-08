@@ -16,9 +16,14 @@
     <!-- Load Angular2 libraries -->
     <script src="./node_modules/zone.js/dist/zone.min.js"></script>
     <script src="./node_modules/reflect-metadata/Reflect.js"></script>
-    
-    <!-- Load Bundle -->
-    <script src="./dist/bundle.js"></script>
+
+    <!-- Load System js and its configuration -->
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script>
+        System.import('app').catch(function(err) {
+            console.error(err);
+        });
+    </script>
 </body>
 
 </html>
