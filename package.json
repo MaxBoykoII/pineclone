@@ -1,0 +1,25 @@
+{
+  "name": "pinterest-clone",
+  "version": "1.0.0",
+  "description": "My solution to freeCodeCamp's build a pinterest clone challenge",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Angular",
+    "2",
+    "Node",
+    "Express"
+  ],
+  "author": "Max Boyko <maxboykomax@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^2.13.6",
+    "typescript": "^2.0.2"
+  },
+  "dependencies": {
+    "del": "^2.2.2"
+  }
+}
