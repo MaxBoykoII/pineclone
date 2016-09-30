@@ -2,12 +2,7 @@ const gulp = require('gulp');
 const ts = require("gulp-typescript");
 const tscConfig = require('./tsconfig.json');
 const del = require('del');
-
-/*
-const browserify = require('browserify');
-const babelify = require('babelify');
-const source = require('vinyl-source-stream');
-*/
+const runSequence = require('run-sequence');
 
 gulp.task('clean', () => {
     return del('./public');
@@ -29,11 +24,21 @@ gulp.task('clean:dist', () => {
     return del('./public/dist');
 });
 
-gulp.task("compile:ts", ['clean:dist'], () => {
+gulp.task('compile:ts', ['clean:dist'], () => {
     return gulp.src(['./client-development/app/**/*.ts', './client-development/typings/index.d.ts'])
         .pipe(ts(tscConfig.compilerOptions))
         .pipe(gulp.dest("./public/dist"));
 });
+
+
+gulp.task('build', ()=>{
+    runSequence('clean', 
+                'copy', 
+                'angular-dependencies', 
+                'compile:ts');
+});
+
+
 
 /*gulp.task('build:bundle', () => {
     return browserify('./public/dist/main.js', {
