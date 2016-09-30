@@ -2,7 +2,12 @@ const gulp = require('gulp');
 const ts = require("gulp-typescript");
 const tscConfig = require('./tsconfig.json');
 const del = require('del');
+const $ = require('gulp-load-plugins')({
+    lazy: true
+});
+
 const runSequence = require('run-sequence');
+
 
 gulp.task('clean', () => {
     return del('./public');
@@ -26,19 +31,29 @@ gulp.task('clean:dist', () => {
 
 gulp.task('compile:ts', ['clean:dist'], () => {
     return gulp.src(['./client-development/app/**/*.ts', './client-development/typings/index.d.ts'])
+        .pipe($.tslint({
+            formatter: 'verbose'
+        }))
         .pipe(ts(tscConfig.compilerOptions))
         .pipe(gulp.dest("./public/dist"));
 });
 
 
-gulp.task('build', ()=>{
-    runSequence('clean', 
-                'copy', 
-                'angular-dependencies', 
-                'compile:ts');
+gulp.task('build', () => {
+    runSequence('clean',
+        'copy',
+        'angular-dependencies',
+        'compile:ts');
 });
 
-
+gulp.task('lint', () => {
+    return gulp.src(['./server.js', './server-side/**/*.js'])
+        .pipe($.jscs())
+        .pipe($.jshint())
+        .pipe($.jshint.reporter('jshint-stylish', {
+            verbose: true
+        }));
+});
 
 /*gulp.task('build:bundle', () => {
     return browserify('./public/dist/main.js', {
