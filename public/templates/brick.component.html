@@ -1,4 +1,6 @@
-<div class="grid-item">
-    <img [src]="url"/>
+<div>
+    <img [src]="url" class="img-responsive" />
     <p>{{description}}</p>
+    <div class="bottom">
+        <img [src]="thumbnail" alt="profile picture" class="img-responsive img-thumbnail profile-img" data-toggle="tooltip" data-placement="bottom" [title]="author" /></div>
 </div>

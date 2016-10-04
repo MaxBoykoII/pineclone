@@ -1,4 +1,8 @@
-import { Component, Input } from '@angular/core';
+import {
+    Component,
+    Input
+}
+from '@angular/core';
 
 @Component({
     selector: 'brick',
@@ -9,4 +13,6 @@ import { Component, Input } from '@angular/core';
 export class BrickComponent {
     @Input() url: string;
     @Input() description: string;
+    @Input() author: string;
+    @Input() thumbnail: string;
 }

@@ -1,12 +1,19 @@
 
 p {
     text-align: center;
-    background-color: #777777;
     float: left;
 }
 
 img {
     width: 100%;
     height: auto;
+    float: left;
+}
+.bottom {
+    display: block;
+}
+.profile-img {
+    width: 35px;
+    height: 35px;
     float: left;
 }

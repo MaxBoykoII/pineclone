@@ -1,5 +1,5 @@
 
 
-<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 180 }'>
-    <brick class="grid-item" *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description"></brick>
+<div class="container grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 180 }'>
+    <brick class="grid-item" *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail"></brick>
 </div>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
 <head>
     <meta charset="UTF8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pineclone</title>
+    <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -16,7 +17,10 @@
     <!-- Load Angular2 libraries -->
     <script src="./node_modules/zone.js/dist/zone.min.js"></script>
     <script src="./node_modules/reflect-metadata/Reflect.js"></script>
-    
+
+    <!-- Load Bootstrap and jquery -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Load Masonry -->
     <script src="./node_modules/masonry-layout/dist/masonry.pkgd.min.js"></script>
 
@@ -26,6 +30,14 @@
     <script>
         System.import('app').catch(function(err) {
             console.error(err);
+        });
+    </script>
+    <!-- Tooltips -->
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip({
+                template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'
+            });
         });
     </script>
 </body>

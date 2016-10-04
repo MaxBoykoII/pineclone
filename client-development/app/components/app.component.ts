@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 /*
- * Import mock data
+ * Import mock data and the picture interface
  */
 import { mockData } from '../mocks/pictures';
+import { Picture } from '../interfaces/picture';
 
 @Component({
     selector: 'app',
@@ -12,5 +13,5 @@ import { mockData } from '../mocks/pictures';
 })
 
 export class AppComponent {
-    pictures = mockData;
+    pictures: Picture[] = mockData;
 }

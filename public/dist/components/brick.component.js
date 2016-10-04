@@ -20,6 +20,14 @@ var BrickComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], BrickComponent.prototype, "description", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], BrickComponent.prototype, "author", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], BrickComponent.prototype, "thumbnail", void 0);
     BrickComponent = __decorate([
         core_1.Component({
             selector: 'brick',
