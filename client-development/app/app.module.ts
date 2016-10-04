@@ -3,13 +3,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { App } from './components/app.component';
+import { AppComponent } from './components/app.component';
+import { BrickComponent } from './components/brick.component';
 
 @NgModule({
     imports: [BrowserModule],
-    declarations: [App],
+    declarations: [AppComponent, BrickComponent],
     providers: [],
-    bootstrap: [App]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {}

@@ -9,18 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var pictures_1 = require('../mocks/pictures');
-var AppComponent = (function () {
-    function AppComponent() {
-        this.pictures = pictures_1.mockData;
+var BrickComponent = (function () {
+    function BrickComponent() {
     }
-    AppComponent = __decorate([
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], BrickComponent.prototype, "url", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], BrickComponent.prototype, "description", void 0);
+    BrickComponent = __decorate([
         core_1.Component({
-            selector: 'app',
-            templateUrl: './templates/app.component.html'
+            selector: 'brick',
+            templateUrl: './templates/brick.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], BrickComponent);
+    return BrickComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.BrickComponent = BrickComponent;

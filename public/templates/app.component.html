@@ -1,1 +1,5 @@
 <p> Hello world!</p>
+
+<div class="grid">
+    <brick *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description"></brick>
+</div>
