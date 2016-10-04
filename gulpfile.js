@@ -32,16 +32,20 @@ gulp.task('clean:dist', () => {
 gulp.task('compile:ts', ['clean:dist'], () => {
     return gulp.src(['./client-development/app/**/*.ts', './client-development/typings/index.d.ts'])
         .pipe($.tslint({
-            formatter: 'verbose'
+            formatter: 'verbose',
+            configuration: './tslint.json'
         }))
+        .pipe($.tslint.report())
         .pipe(ts(tscConfig.compilerOptions))
         .pipe(gulp.dest("./public/dist"));
 });
 
-gulp.task('component:scss', ()=>{
+gulp.task('component:scss', () => {
     return gulp.src('./client-development/app/sass/**/*.scss')
         .pipe($.sass().on('error', $.sass.logError))
-        .pipe($.autoprefixer({browsers: ['last 2 version', '>5%']}))
+        .pipe($.autoprefixer({
+            browsers: ['last 2 version', '>5%']
+        }))
         .pipe(gulp.dest('./public/css'));
 });
 
