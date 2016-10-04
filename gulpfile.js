@@ -51,7 +51,7 @@ gulp.task('component:scss', () => {
 
 gulp.task('build', () => {
     runSequence('clean',
-        'copy',
+        ['copy', 'component:scss'],
         'angular-dependencies',
         'compile:ts');
 });

@@ -1,0 +1,6 @@
+.grid {
+  position: relative; }
+
+.grid-item {
+  float: left;
+  width: 180px; }
