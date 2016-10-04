@@ -2,7 +2,8 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'brick',
-    templateUrl: './templates/brick.component.html'
+    templateUrl: './templates/brick.component.html',
+    styleUrls: ['./css/brick.component.css']
 })
 
 export class BrickComponent {

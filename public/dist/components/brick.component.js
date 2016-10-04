@@ -23,7 +23,8 @@ var BrickComponent = (function () {
     BrickComponent = __decorate([
         core_1.Component({
             selector: 'brick',
-            templateUrl: './templates/brick.component.html'
+            templateUrl: './templates/brick.component.html',
+            styleUrls: ['./css/brick.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], BrickComponent);

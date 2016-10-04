@@ -38,6 +38,12 @@ gulp.task('compile:ts', ['clean:dist'], () => {
         .pipe(gulp.dest("./public/dist"));
 });
 
+gulp.task('component:scss', ()=>{
+    return gulp.src('./client-development/app/sass/**/*.scss')
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.autoprefixer({browsers: ['last 2 version', '>5%']}))
+        .pipe(gulp.dest('./public/css'));
+});
 
 gulp.task('build', () => {
     runSequence('clean',
