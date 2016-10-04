@@ -1,7 +1,12 @@
-
 p {
     text-align: center;
-    float: left;
+    display: block;
+}
+
+button {
+    float: right;
+    width: 25px;
+    height: 25px;
 }
 
 img {
@@ -9,9 +14,11 @@ img {
     height: auto;
     float: left;
 }
+
 .bottom {
     display: block;
 }
+
 .profile-img {
     width: 35px;
     height: 35px;

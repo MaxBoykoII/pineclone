@@ -1,6 +1,11 @@
 p {
   text-align: center;
-  float: left; }
+  display: block; }
+
+button {
+  float: right;
+  width: 25px;
+  height: 25px; }
 
 img {
   width: 100%;
