@@ -1,9 +1,23 @@
+@import 'variables';
+nav {
+    background-color: $dark-brown;
+    a {
+        color: white !important;
+        font-weight: 500;
+        &:hover {
+            color: $dark-brown;
+            background: $light-green;
+        }
+    }
+}
+
 #gallery {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
+
 .gallery-item {
-   flex: 0 1 200px;
-   margin: 1em 1em;
+    flex: 0 1 200px;
+    margin: 1em 1em;
 }

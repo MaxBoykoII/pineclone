@@ -1,3 +1,12 @@
+nav {
+  background-color: #3E260E; }
+  nav a {
+    color: white !important;
+    font-weight: 500; }
+    nav a:hover {
+      color: #3E260E;
+      background: #E2F1EA; }
+
 #gallery {
   display: -webkit-box;
   display: -webkit-flex;
