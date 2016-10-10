@@ -1,11 +1,31 @@
+.brick {
+  background-color: #744613;
+  padding: 1em;
+  border-radius: 5%; }
+
 p {
   text-align: center;
-  display: block; }
+  display: block;
+  background-color: #E2F1EA; }
 
 button {
   float: right;
   width: 25px;
-  height: 25px; }
+  height: 25px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #C3BC6B;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  button .glyphicon-star {
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+                -ms-grid-row-align: center;
+            align-self: center; }
 
 img {
   width: 100%;
@@ -13,7 +33,18 @@ img {
   float: left; }
 
 .bottom {
-  display: block; }
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
 
 .profile-img {
   width: 35px;

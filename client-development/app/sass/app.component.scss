@@ -1,8 +1,9 @@
-.grid {
-    position: relative;
+#gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 }
-.grid-item {
-    float: left;
-    width: 180px;
-    margin: 0 1em;
+.gallery-item {
+   flex: 0 1 200px;
+   margin: 1em 1em;
 }

@@ -24,4 +24,14 @@ exports.mockData = [{
         description: 'tower of pisa',
         author: '@js999x',
         thumbnail: 'https://pbs.twimg.com/profile_images/749014256004296704/8G_Bs0L7_normal.jpg'
+    }, {
+        url: 'https://c2.staticflickr.com/2/1520/24330829813_944c817720_b.jpg',
+        description: 'Tree',
+        author: '@TestFcc7',
+        thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_0_normal.png'
+    }, {
+        url: 'https://upload.wikimedia.org/wikipedia/commons/8/85/Hanoi_railroad_tracks.jpg',
+        description: 'Hanoi railroad',
+        author: '@thanhacun',
+        thumbnail: 'https://pbs.twimg.com/profile_images/744886125529956353/wC7QEgVD_normal.jpg'
     }];

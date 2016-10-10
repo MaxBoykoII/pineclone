@@ -1,12 +1,26 @@
+@import 'variables';
+
+.brick {
+     background-color: $medium-brown;
+     padding: 1em;
+     border-radius: 5%;
+}
 p {
     text-align: center;
     display: block;
+    background-color: $light-green;
 }
 
 button {
     float: right;
     width: 25px;
     height: 25px;
+    display: flex;
+    background-color: $light-yellow;
+    justify-content: center;
+    .glyphicon-star {
+        align-self: center
+    }
 }
 
 img {
@@ -16,7 +30,9 @@ img {
 }
 
 .bottom {
-    display: block;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }
 
 .profile-img {
