@@ -1,12 +1,14 @@
 @import 'variables';
+
+
 nav {
     background-color: $dark-brown;
     a {
         color: white !important;
-        font-weight: 500;
+        font-weight: 600;
         &:hover {
-            color: $dark-brown;
-            background: $light-green;
+            color: $dark-brown !important;
+            background: $medium-green !important;
         }
     }
 }

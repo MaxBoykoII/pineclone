@@ -2,10 +2,10 @@ nav {
   background-color: #3E260E; }
   nav a {
     color: white !important;
-    font-weight: 500; }
+    font-weight: 600; }
     nav a:hover {
-      color: #3E260E;
-      background: #E2F1EA; }
+      color: #3E260E !important;
+      background: #90C4AB !important; }
 
 #gallery {
   display: -webkit-box;
