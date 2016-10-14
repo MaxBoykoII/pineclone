@@ -14,9 +14,28 @@ var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var AppComponent = (function () {
     function AppComponent() {
         this.pictures = pictures_1.mockData;
+        this.upload = {
+            url: '',
+            description: '',
+            author: '@test_user',
+            thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
+        };
     }
     AppComponent.prototype.open = function () {
         this.modal.open();
+    };
+    AppComponent.prototype.close = function () {
+        this.modal.close();
+    };
+    AppComponent.prototype.addPicture = function () {
+        this.pictures.push(this.upload);
+        this.upload = {
+            url: '',
+            description: '',
+            author: '@test_user',
+            thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
+        };
+        this.close();
     };
     __decorate([
         core_1.ViewChild('picModal'), 

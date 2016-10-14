@@ -19,19 +19,33 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Login</a></li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
 </nav>
 
 <modal #picModal>
-     <modal-header [show-close]="true">
-        <h4 class="modal-title">Add a picture</h4>
+  <form #modalForm="ngForm">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Add a picture</h4>
     </modal-header>
     <modal-body>
-       Testing the modal...
+      <div class="form-group">
+        <label for="firstName">URL</label>
+        <input type="url" class="form-control" required [(ngModel)]="upload.url" name="url" id="url">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Description</label>
+        <input type="text" class="form-control" required [(ngModel)]="upload.description" name="description" id="description">
+      </div>
     </modal-body>
-    <modal-footer [show-default-buttons]="true"></modal-footer>
+    <modal-footer>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="picModal.dismiss()">Cancel</button>
+      <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="addPicture()">Save</button>
+    </modal-footer>
+  </form>
 </modal>
 <div id="gallery" class="container">
-    <brick class="gallery-item" *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail"></brick>
+  <brick class="gallery-item" *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail"></brick>
 </div>

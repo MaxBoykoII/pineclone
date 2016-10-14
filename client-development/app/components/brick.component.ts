@@ -15,4 +15,5 @@ export class BrickComponent {
     @Input() description: string;
     @Input() author: string;
     @Input() thumbnail: string;
+    defaultSrc: string = 'https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'
 }
