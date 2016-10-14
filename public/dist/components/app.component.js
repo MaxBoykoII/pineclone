@@ -10,10 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var pictures_1 = require('../mocks/pictures');
+var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var AppComponent = (function () {
     function AppComponent() {
         this.pictures = pictures_1.mockData;
     }
+    AppComponent.prototype.open = function () {
+        this.modal.open();
+    };
+    __decorate([
+        core_1.ViewChild('picModal'), 
+        __metadata('design:type', ng2_bs3_modal_1.ModalComponent)
+    ], AppComponent.prototype, "modal", void 0);
     AppComponent = __decorate([
         core_1.Component({
             selector: 'app',

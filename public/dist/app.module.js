@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var app_component_1 = require('./components/app.component');
 var brick_component_1 = require('./components/brick.component');
 var AppModule = (function () {
@@ -17,7 +18,7 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
+            imports: [platform_browser_1.BrowserModule, ng2_bs3_modal_1.Ng2Bs3ModalModule],
             declarations: [app_component_1.AppComponent, brick_component_1.BrickComponent],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

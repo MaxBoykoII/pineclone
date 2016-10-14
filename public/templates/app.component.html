@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Add a picture</a></li>
+        <li><a href="#" (click)="open()">Add a picture</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Login</a></li>
@@ -23,6 +23,15 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<modal #picModal>
+     <modal-header [show-close]="true">
+        <h4 class="modal-title">Add a picture</h4>
+    </modal-header>
+    <modal-body>
+       Testing the modal...
+    </modal-body>
+    <modal-footer [show-default-buttons]="true"></modal-footer>
+</modal>
 <div id="gallery" class="container">
     <brick class="gallery-item" *ngFor="let picture of pictures" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail"></brick>
 </div>

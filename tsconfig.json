@@ -23,6 +23,9 @@
     "files": [
         "./client-development/app/main.ts",
         "./client-development/typings/index.d.ts"
+    ],
+    "exclude": [
+        "./client-development/node_modules"
     ]
 
 }
