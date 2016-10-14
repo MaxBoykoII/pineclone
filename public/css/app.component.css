@@ -18,11 +18,15 @@ nav {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
-          justify-content: center; }
+          justify-content: center;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start; }
 
 .gallery-item {
   -webkit-box-flex: 0;
   -webkit-flex: 0 1 200px;
       -ms-flex: 0 1 200px;
           flex: 0 1 200px;
-  margin: 1em 1em; }
+  margin: 0.25em 0.25em; }
