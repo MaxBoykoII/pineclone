@@ -16,6 +16,15 @@ require('./server-side/config/passport')(app);
 
 app.use(express.static(__dirname + '/public'));
 
+var apiRouter = require('./server-side/routes/api');
+
+app.use('/api', apiRouter);
+
+process.on('uncaughtException', err => {
+    if (err) {
+        console.log(err, err.stack);
+    }
+});
 app.listen(process.env.PORT, process.env.IP, () => {
-   console.log('The server is listening on ' + process.env.PORT);
+    console.log('The server is listening on ' + process.env.PORT);
 });
