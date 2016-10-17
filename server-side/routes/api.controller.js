@@ -39,8 +39,16 @@ var getPictures = (req, res) => {
     res.json(pictures);
 };
 
+var addPicture = (req, res) => {
+    console.log('the request body is ', req.body);
+    pictures.push(req.body);
+    res.json(pictures);
+    console.log('pictures array: ', pictures);
+};
+
 var apiController = {
-    getPictures: getPictures
+    getPictures: getPictures,
+    addPicture: addPicture
 };
 
 module.exports = apiController;

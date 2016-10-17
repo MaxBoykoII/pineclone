@@ -29,7 +29,8 @@ var AppComponent = (function () {
         this.modal.close();
     };
     AppComponent.prototype.addPicture = function () {
-        this.pictures.push(this.upload);
+        var _this = this;
+        this._pictureService.addPicture(this.upload).subscribe(function (pictures) { return _this.pictures = pictures; });
         this.upload = {
             url: '',
             description: '',

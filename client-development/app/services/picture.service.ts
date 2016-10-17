@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Picture } from '../interfaces/picture';
@@ -16,6 +16,18 @@ export class PictureService {
 
     getPictures(): Observable < Picture[] > {
         return this.http.get(this.apiURL)
+            .map(this.extractData)
+    }
+    addPicture(picture: Picture): Observable < Picture[] > {
+        const body = JSON.stringify(picture);
+        const headers = new Headers({
+            'Content-Type': 'application/json'
+        });
+        const options = new RequestOptions({
+            headers
+        });
+
+        return this.http.post(this.apiURL, body, options)
             .map(this.extractData)
     }
     private extractData(res: Response) {

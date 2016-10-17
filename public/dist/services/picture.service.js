@@ -20,6 +20,17 @@ var PictureService = (function () {
         return this.http.get(this.apiURL)
             .map(this.extractData);
     };
+    PictureService.prototype.addPicture = function (picture) {
+        var body = JSON.stringify(picture);
+        var headers = new http_1.Headers({
+            'Content-Type': 'application/json'
+        });
+        var options = new http_1.RequestOptions({
+            headers: headers
+        });
+        return this.http.post(this.apiURL, body, options)
+            .map(this.extractData);
+    };
     PictureService.prototype.extractData = function (res) {
         return res.json();
     };
