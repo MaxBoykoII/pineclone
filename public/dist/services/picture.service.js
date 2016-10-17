@@ -11,14 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
+var Rx_1 = require('rxjs/Rx');
 var PictureService = (function () {
     function PictureService(http) {
         this.http = http;
         this.apiURL = '/api';
     }
     PictureService.prototype.getPictures = function () {
-        return this.http.get(this.apiURL)
-            .map(this.extractData);
+        var _this = this;
+        return Rx_1.Observable.interval(2000).switchMap(function () { return _this.http.get(_this.apiURL).map(_this.extractData); });
     };
     PictureService.prototype.addPicture = function (picture) {
         var body = JSON.stringify(picture);

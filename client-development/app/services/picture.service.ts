@@ -3,7 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Picture } from '../interfaces/picture';
-import { Observable }     from 'rxjs/Observable';
+import { Observable }     from 'rxjs/Rx';
 
 import { mockData } from '../mocks/pictures';
 
@@ -15,8 +15,7 @@ export class PictureService {
     constructor(private http: Http) {}
 
     getPictures(): Observable < Picture[] > {
-        return this.http.get(this.apiURL)
-            .map(this.extractData)
+        return Observable.interval(2000).switchMap(() => this.http.get(this.apiURL).map(this.extractData));
     }
     addPicture(picture: Picture): Observable < Picture > {
         const body = JSON.stringify(picture);
