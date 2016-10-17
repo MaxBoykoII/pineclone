@@ -8,10 +8,12 @@ import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './components/app.component';
 import { BrickComponent } from './components/brick.component';
 
+import { PictureService } from './services/picture.service';
+
 @NgModule({
     imports: [BrowserModule, Ng2Bs3ModalModule, FormsModule],
     declarations: [AppComponent, BrickComponent],
-    providers: [],
+    providers: [PictureService],
     bootstrap: [AppComponent]
 })
 

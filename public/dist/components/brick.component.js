@@ -11,7 +11,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var BrickComponent = (function () {
     function BrickComponent() {
-        this.defaultSrc = 'https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png';
     }
     __decorate([
         core_1.Input(), 

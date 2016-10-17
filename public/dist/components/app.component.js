@@ -9,11 +9,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var pictures_1 = require('../mocks/pictures');
+var picture_service_1 = require('../services/picture.service');
 var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var AppComponent = (function () {
-    function AppComponent() {
-        this.pictures = pictures_1.mockData;
+    function AppComponent(_pictureService) {
+        this._pictureService = _pictureService;
+        this.pictures = [];
         this.upload = {
             url: '',
             description: '',
@@ -37,6 +38,9 @@ var AppComponent = (function () {
         };
         this.close();
     };
+    AppComponent.prototype.ngOnInit = function () {
+        this.pictures = this._pictureService.getPictures();
+    };
     __decorate([
         core_1.ViewChild('picModal'), 
         __metadata('design:type', ng2_bs3_modal_1.ModalComponent)
@@ -47,7 +51,7 @@ var AppComponent = (function () {
             templateUrl: './templates/app.component.html',
             styleUrls: ['./css/app.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [picture_service_1.PictureService])
     ], AppComponent);
     return AppComponent;
 }());
