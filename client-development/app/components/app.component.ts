@@ -36,7 +36,10 @@ export class AppComponent implements OnInit {
         this.modal.close();
     }
     addPicture() {
-        this._pictureService.addPicture(this.upload).subscribe(pictures => this.pictures = pictures);
+        this._pictureService.addPicture(this.upload).subscribe(picture => {
+            this.pictures.push(picture)
+            console.log('created picture is ', picture);
+        });
         this.upload = {
             url: '',
             description: '',

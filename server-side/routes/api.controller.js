@@ -1,4 +1,4 @@
-var pictures = [{
+/* var pictures = [{
     url: 'https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-439045.jpg',
     description: 'testing',
     author: '@FengKraken1337',
@@ -33,17 +33,25 @@ var pictures = [{
     description: 'Hanoi railroad',
     author: '@thanhacun',
     thumbnail: 'https://pbs.twimg.com/profile_images/744886125529956353/wC7QEgVD_normal.jpg'
-}];
+}]; */
+var Picture = require('../models/picture.model');
 
 var getPictures = (req, res) => {
-    res.json(pictures);
+    Picture.find((err, pictures) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.json(pictures);
+        }
+    });
 };
 
 var addPicture = (req, res) => {
     console.log('the request body is ', req.body);
-    pictures.push(req.body);
-    res.json(pictures);
-    console.log('pictures array: ', pictures);
+    var picture = new Picture(req.body);
+    picture.save();
+    res.status(201).json(picture);
 };
 
 var apiController = {

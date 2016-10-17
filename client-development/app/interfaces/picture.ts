@@ -3,4 +3,5 @@ export interface Picture {
     description: string;
     author?: string;
     thumbnail?: string;
+    likedBy?: string[]
 }

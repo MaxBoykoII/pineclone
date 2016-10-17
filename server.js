@@ -2,6 +2,9 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('cookie-session');
+var mongoose = require('mongoose');
+
+var db = mongoose.connect('mongodb://maxboyko-pinterest-clone-3739255');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({

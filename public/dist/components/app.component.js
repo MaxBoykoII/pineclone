@@ -30,7 +30,10 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.addPicture = function () {
         var _this = this;
-        this._pictureService.addPicture(this.upload).subscribe(function (pictures) { return _this.pictures = pictures; });
+        this._pictureService.addPicture(this.upload).subscribe(function (picture) {
+            _this.pictures.push(picture);
+            console.log('created picture is ', picture);
+        });
         this.upload = {
             url: '',
             description: '',

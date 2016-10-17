@@ -18,7 +18,7 @@ export class PictureService {
         return this.http.get(this.apiURL)
             .map(this.extractData)
     }
-    addPicture(picture: Picture): Observable < Picture[] > {
+    addPicture(picture: Picture): Observable < Picture > {
         const body = JSON.stringify(picture);
         const headers = new Headers({
             'Content-Type': 'application/json'

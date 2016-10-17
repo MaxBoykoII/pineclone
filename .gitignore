@@ -1,2 +1,4 @@
 node_modules
 client-development/node_modules
+data
+mongod
