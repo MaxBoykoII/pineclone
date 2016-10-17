@@ -9,16 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var pictures_1 = require('../mocks/pictures');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/map');
 var PictureService = (function () {
-    function PictureService() {
+    function PictureService(http) {
+        this.http = http;
+        this.apiURL = '/api';
     }
     PictureService.prototype.getPictures = function () {
-        return pictures_1.mockData;
+        return this.http.get(this.apiURL)
+            .map(this.extractData);
+    };
+    PictureService.prototype.extractData = function (res) {
+        return res.json();
     };
     PictureService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], PictureService);
     return PictureService;
 }());

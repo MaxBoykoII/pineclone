@@ -47,8 +47,6 @@ export class AppComponent implements OnInit {
     }
     ngOnInit(): void {
 
-        this.pictures = this._pictureService.getPictures();
+        this._pictureService.getPictures().subscribe(pictures => this.pictures = pictures);
     }
-
-
 }

@@ -39,7 +39,8 @@ var AppComponent = (function () {
         this.close();
     };
     AppComponent.prototype.ngOnInit = function () {
-        this.pictures = this._pictureService.getPictures();
+        var _this = this;
+        this._pictureService.getPictures().subscribe(function (pictures) { return _this.pictures = pictures; });
     };
     __decorate([
         core_1.ViewChild('picModal'), 

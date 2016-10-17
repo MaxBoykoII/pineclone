@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./components/app.component');
 var brick_component_1 = require('./components/brick.component');
 var picture_service_1 = require('./services/picture.service');
@@ -20,8 +21,16 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, ng2_bs3_modal_1.Ng2Bs3ModalModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, brick_component_1.BrickComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                ng2_bs3_modal_1.Ng2Bs3ModalModule,
+                forms_1.FormsModule,
+                http_1.HttpModule
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                brick_component_1.BrickComponent
+            ],
             providers: [picture_service_1.PictureService],
             bootstrap: [app_component_1.AppComponent]
         }), 
