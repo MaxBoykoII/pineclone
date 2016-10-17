@@ -19,7 +19,11 @@ var PictureService = (function () {
     }
     PictureService.prototype.getPictures = function () {
         var _this = this;
-        return Rx_1.Observable.interval(2000).switchMap(function () { return _this.http.get(_this.apiURL).map(_this.extractData); });
+        return Rx_1.Observable.interval(2000).switchMap(function () {
+            return _this.http.get(_this.apiURL)
+                .map(_this.extractData)
+                .catch(_this.handleError);
+        });
     };
     PictureService.prototype.addPicture = function (picture) {
         var body = JSON.stringify(picture);
@@ -30,10 +34,17 @@ var PictureService = (function () {
             headers: headers
         });
         return this.http.post(this.apiURL, body, options)
-            .map(this.extractData);
+            .map(this.extractData)
+            .catch(this.handleError);
     };
     PictureService.prototype.extractData = function (res) {
         return res.json();
+    };
+    PictureService.prototype.handleError = function (error) {
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg);
+        return Rx_1.Observable.throw(errMsg);
     };
     PictureService = __decorate([
         core_1.Injectable(), 
