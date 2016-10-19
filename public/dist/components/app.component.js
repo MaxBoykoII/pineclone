@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var _ = require('lodash');
 var picture_service_1 = require('../services/picture.service');
 var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var AppComponent = (function () {
@@ -44,7 +45,11 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this._pictureService.getPictures().subscribe(function (pictures) { return _this.pictures = pictures; });
+        this._pictureService.getPictures().subscribe(function (pictures) {
+            if (!_.isEqual(_this.pictures, pictures)) {
+                _this.pictures = pictures;
+            }
+        });
     };
     __decorate([
         core_1.ViewChild('picModal'), 

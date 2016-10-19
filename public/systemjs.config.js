@@ -24,6 +24,7 @@
       // other libraries
       'rxjs':                       'npm:rxjs',
       'ng2-bs3-modal': 'npm:ng2-bs3-modal',
+      'lodash': 'npm:lodash/lodash.min.js'
       //'angular2-in-memory-web-api': 'npm:angular2-in-memory-web-api',
     },
     // packages tells the System loader how to load when no filename and/or no extension
