@@ -1,8 +1,37 @@
 <div class="brick">
-    <img [src]="url" class="img-responsive"  onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'"/>
-    <p>{{description}}</p>
+    <div class="top">
+        <button type="button" class="settings btn" (click)="open()"><i class="fa fa-cog" aria-hidden="true"></i></button>
+    </div>
+    <div class="center">
+        <img [src]="url" class="img-responsive" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" />
+        <p>{{description}}</p>
+    </div>
     <div class="bottom">
-        <img [src]="thumbnail" alt="profile picture" class="img-responsive img-thumbnail profile-img" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" data-toggle="tooltip" data-placement="bottom" [title]="author" />
-        <button class="btn"><span class="glyphicon glyphicon-star"></span></button>
-        </div>
+        <img [src]="thumbnail" alt="profile picture" class="img-responsive img-thumbnail profile-img" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" data-toggle="tooltip" data-placement="bottom"
+            [title]="author" />
+        <button type="button" class="btn like"><span class="glyphicon glyphicon-star"></span></button>
+    </div>
 </div>
+
+<modal #editModal>
+    <form #modalForm="ngForm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">Edit picture</h4>
+        </modal-header>
+        <modal-body>
+            <div class="form-group">
+                <label for="firstName">URL</label>
+                <input type="text" class="form-control" required [(ngModel)]="update.url" name="url" id="url">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Description</label>
+                <input type="text" class="form-control" required [(ngModel)]="update.description" name="description" id="description">
+            </div>
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="editModal.dismiss()">Cancel</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="editModal.dismiss()">Remove</button>
+            <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="editModal.dismiss()">Save</button>
+        </modal-footer>
+    </form>
+</modal>

@@ -9,9 +9,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var BrickComponent = (function () {
     function BrickComponent() {
     }
+    BrickComponent.prototype.open = function () {
+        this.modal.open();
+    };
+    BrickComponent.prototype.close = function () {
+        this.modal.close();
+    };
+    BrickComponent.prototype.ngOnInit = function () {
+        this.update = {
+            url: this.url,
+            description: this.description
+        };
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', String)
@@ -28,6 +41,10 @@ var BrickComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', String)
     ], BrickComponent.prototype, "thumbnail", void 0);
+    __decorate([
+        core_1.ViewChild('editModal'), 
+        __metadata('design:type', ng2_bs3_modal_1.ModalComponent)
+    ], BrickComponent.prototype, "modal", void 0);
     BrickComponent = __decorate([
         core_1.Component({
             selector: 'brick',

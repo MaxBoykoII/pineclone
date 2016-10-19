@@ -6,13 +6,19 @@
      border-radius: 5%;
      box-shadow: 10px 12px 32px -3px rgba(116,70,19,1);
 }
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-bottom: 0.5em;
+}
 p {
     text-align: center;
     display: block;
     background-color: $light-green;
 }
 
-button {
+.like {
     float: right;
     width: 25px;
     height: 25px;

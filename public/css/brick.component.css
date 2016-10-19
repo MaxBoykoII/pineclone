@@ -4,12 +4,28 @@
   border-radius: 5%;
   box-shadow: 10px 12px 32px -3px #744613; }
 
+.top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-bottom: 0.5em; }
+
 p {
   text-align: center;
   display: block;
   background-color: #E2F1EA; }
 
-button {
+.like {
   float: right;
   width: 25px;
   height: 25px;
@@ -22,7 +38,7 @@ button {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
-  button .glyphicon-star {
+  .like .glyphicon-star {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
                 -ms-grid-row-align: center;
