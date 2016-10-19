@@ -65,6 +65,16 @@ gulp.task('lint', () => {
         }));
 });
 
+gulp.task('server-tests', () =>{
+     return gulp.src(['server-side/tests/*.js'], { read: false })
+    .pipe($.mocha({
+      reporter: 'spec',
+      globals: {
+        should: require('expect.js')
+      }
+    }));
+})
+
 /*gulp.task('build:bundle', () => {
     return browserify('./public/dist/main.js', {
             debug: true
