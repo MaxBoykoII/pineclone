@@ -5,5 +5,7 @@ var ctrl = require('./api.controller');
 router.route('/')
     .get(ctrl.getPictures)
     .post(ctrl.addPicture);
+router.route('/:id')
+    .put(ctrl.updatePicture);
 
 module.exports = router;
