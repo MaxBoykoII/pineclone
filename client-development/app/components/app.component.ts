@@ -2,10 +2,11 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
 /*
- * Import picture service and the picture interface
+ * Import picture service, the picture interface, and the update interface
  */
 import { PictureService } from '../services/picture.service';
 import { Picture } from '../interfaces/picture';
+import { Update } from '../interfaces/update';
 
 /*
  * Import third-party modal component
@@ -48,6 +49,13 @@ export class AppComponent implements OnInit {
             thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
         };
         this.close();
+    }
+    updatePicture(update: Update): void {
+        this._pictureService.updatePicture(update).subscribe(updatedPicture => {
+            const oldPicture = this.pictures.find(picture => picture._id === updatedPicture._id);
+            const index = _.indexOf(this.pictures, oldPicture);
+            this.pictures.splice(index, 1, updatedPicture);
+        });
     }
     ngOnInit(): void {
 

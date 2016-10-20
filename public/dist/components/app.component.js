@@ -43,6 +43,14 @@ var AppComponent = (function () {
         };
         this.close();
     };
+    AppComponent.prototype.updatePicture = function (update) {
+        var _this = this;
+        this._pictureService.updatePicture(update).subscribe(function (updatedPicture) {
+            var oldPicture = _this.pictures.find(function (picture) { return picture._id === updatedPicture._id; });
+            var index = _.indexOf(_this.pictures, oldPicture);
+            _this.pictures.splice(index, 1, updatedPicture);
+        });
+    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._pictureService.getPictures().subscribe(function (pictures) {

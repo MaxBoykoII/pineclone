@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, OnInit } from '@angular/core';
+import { Component, Input, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 
 /*
  * import picture interface
@@ -17,10 +17,12 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 
 export class BrickComponent implements OnInit {
+    @Input() id: string;
     @Input() url: string;
     @Input() description: string;
     @Input() author: string;
     @Input() thumbnail: string;
+    @Output() put: EventEmitter < Update > = new EventEmitter <Update>();
     update: Update;
     constructor() {}
     @ViewChild('editModal')
@@ -32,8 +34,13 @@ export class BrickComponent implements OnInit {
     close(): void {
         this.modal.close();
     }
+    onUpdate(): void {
+        this.put.emit(this.update);
+        this.close();
+    }
     ngOnInit(): void {
         this.update = {
+            id: this.id,
             url: this.url,
             description: this.description
         };

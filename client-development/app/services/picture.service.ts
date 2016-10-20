@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Picture } from '../interfaces/picture';
+import { Update } from '../interfaces/update';
 import { Observable }     from 'rxjs/Rx';
 
 // import { mockData } from '../mocks/pictures';
@@ -11,6 +12,9 @@ import { Observable }     from 'rxjs/Rx';
 
 export class PictureService {
     private apiURL = '/api';
+    private headers = new Headers({
+        'Content-Type': 'application/json'
+    });
 
     constructor(private http: Http) {}
 
@@ -20,18 +24,28 @@ export class PictureService {
             .map(this.extractData)
             .catch(this.handleError));
     }
+
     addPicture(picture: Picture): Observable < Picture > {
         const body = JSON.stringify(picture);
-        const headers = new Headers({
-            'Content-Type': 'application/json'
-        });
         const options = new RequestOptions({
-            headers
+            headers: this.headers
         });
 
         return this.http.post(this.apiURL, body, options)
             .map(this.extractData)
             .catch(this.handleError);
+    }
+
+    updatePicture(update: Update): Observable < Picture > {
+        const url = `${this.apiURL}/${update.id}`;
+        const body = JSON.stringify(update);
+        const options = new RequestOptions({
+            headers: this.headers
+        });
+        return this.http.put(url, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+
     }
     private extractData(res: Response) {
         return res.json();

@@ -29,16 +29,14 @@ var updatePicture = (req, res) => {
             res.sendStatus(404);
         }
         else {
-            console.log('updates:', updatedProperties);
             var updated = _.assign(picture, updatedProperties);
-            console.log('updated picture', updated);
         }
         updated.save(err => {
             if (err) {
                 res.sendStatus(500);
             }
             else {
-                res.sendStatus(204);
+                res.status(200).json(updated);
             }
         });
     });

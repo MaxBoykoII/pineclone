@@ -16,6 +16,9 @@ var PictureService = (function () {
     function PictureService(http) {
         this.http = http;
         this.apiURL = '/api';
+        this.headers = new http_1.Headers({
+            'Content-Type': 'application/json'
+        });
     }
     PictureService.prototype.getPictures = function () {
         var _this = this;
@@ -27,13 +30,20 @@ var PictureService = (function () {
     };
     PictureService.prototype.addPicture = function (picture) {
         var body = JSON.stringify(picture);
-        var headers = new http_1.Headers({
-            'Content-Type': 'application/json'
-        });
         var options = new http_1.RequestOptions({
-            headers: headers
+            headers: this.headers
         });
         return this.http.post(this.apiURL, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    PictureService.prototype.updatePicture = function (update) {
+        var url = this.apiURL + "/" + update.id;
+        var body = JSON.stringify(update);
+        var options = new http_1.RequestOptions({
+            headers: this.headers
+        });
+        return this.http.put(url, body, options)
             .map(this.extractData)
             .catch(this.handleError);
     };
