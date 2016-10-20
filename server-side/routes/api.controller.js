@@ -42,10 +42,24 @@ var updatePicture = (req, res) => {
     });
 };
 
+var removePicture = (req, res) => {
+    var id = req.params.id;
+    Picture.findByIdAndRemove(id, (err, picture) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        }
+        else {
+            res.status(200).json(picture);
+        }
+    });
+};
+
 var apiController = {
     getPictures,
     addPicture,
-    updatePicture
+    updatePicture,
+    removePicture
 };
 
 module.exports = apiController;

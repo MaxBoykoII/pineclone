@@ -6,6 +6,7 @@ router.route('/')
     .get(ctrl.getPictures)
     .post(ctrl.addPicture);
 router.route('/:id')
-    .put(ctrl.updatePicture);
+    .put(ctrl.updatePicture)
+    .delete(ctrl.removePicture);
 
 module.exports = router;
