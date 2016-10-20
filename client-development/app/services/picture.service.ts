@@ -47,9 +47,16 @@ export class PictureService {
             .catch(this.handleError);
 
     }
+    removePicture(id: string): Observable < Picture > {
+        const url = `${this.apiURL}/${id}`;
+        return this.http.delete(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
     private extractData(res: Response) {
         return res.json();
     }
+
     private handleError(error: any) {
         const errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';

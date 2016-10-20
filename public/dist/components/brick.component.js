@@ -13,6 +13,7 @@ var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var BrickComponent = (function () {
     function BrickComponent() {
         this.put = new core_1.EventEmitter();
+        this.remove = new core_1.EventEmitter();
     }
     BrickComponent.prototype.open = function () {
         this.modal.open();
@@ -22,6 +23,10 @@ var BrickComponent = (function () {
     };
     BrickComponent.prototype.onUpdate = function () {
         this.put.emit(this.update);
+        this.close();
+    };
+    BrickComponent.prototype.onRemove = function () {
+        this.remove.emit(this.id);
         this.close();
     };
     BrickComponent.prototype.ngOnInit = function () {
@@ -55,6 +60,10 @@ var BrickComponent = (function () {
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], BrickComponent.prototype, "put", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], BrickComponent.prototype, "remove", void 0);
     __decorate([
         core_1.ViewChild('editModal'), 
         __metadata('design:type', ng2_bs3_modal_1.ModalComponent)

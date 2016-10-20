@@ -23,6 +23,7 @@ export class BrickComponent implements OnInit {
     @Input() author: string;
     @Input() thumbnail: string;
     @Output() put: EventEmitter < Update > = new EventEmitter <Update>();
+    @Output() remove: EventEmitter < string > = new EventEmitter < string > ();
     update: Update;
     constructor() {}
     @ViewChild('editModal')
@@ -36,6 +37,10 @@ export class BrickComponent implements OnInit {
     }
     onUpdate(): void {
         this.put.emit(this.update);
+        this.close();
+    }
+    onRemove(): void {
+        this.remove.emit(this.id);
         this.close();
     }
     ngOnInit(): void {

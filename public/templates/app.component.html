@@ -47,5 +47,5 @@
   </form>
 </modal>
 <div id="gallery" class="container">
-  <brick class="gallery-item" *ngFor="let picture of pictures" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail" (put)="updatePicture($event)"></brick>
+  <brick class="gallery-item" *ngFor="let picture of pictures" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [thumbnail]="picture.thumbnail" (put)="updatePicture($event)" (remove)="removePicture($event)"></brick>
 </div>

@@ -51,6 +51,12 @@ var AppComponent = (function () {
             _this.pictures.splice(index, 1, updatedPicture);
         });
     };
+    AppComponent.prototype.removePicture = function (id) {
+        var _this = this;
+        this._pictureService.removePicture(id).subscribe(function (removedPicture) {
+            _.pull(_this.pictures, removedPicture);
+        });
+    };
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
         this._pictureService.getPictures().subscribe(function (pictures) {

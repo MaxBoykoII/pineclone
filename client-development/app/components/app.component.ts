@@ -57,6 +57,11 @@ export class AppComponent implements OnInit {
             this.pictures.splice(index, 1, updatedPicture);
         });
     }
+    removePicture(id: string): void {
+        this._pictureService.removePicture(id).subscribe(removedPicture => {
+            _.pull(this.pictures, removedPicture);
+        })
+    }
     ngOnInit(): void {
 
         this._pictureService.getPictures().subscribe(pictures => {

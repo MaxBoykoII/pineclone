@@ -47,6 +47,12 @@ var PictureService = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    PictureService.prototype.removePicture = function (id) {
+        var url = this.apiURL + "/" + id;
+        return this.http.delete(url)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     PictureService.prototype.extractData = function (res) {
         return res.json();
     };
