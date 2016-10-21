@@ -18,9 +18,9 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
     templateUrl: './templates/app.component.html',
     styleUrls: ['./css/app.component.css']
 })
-
 export class AppComponent implements OnInit {
     pictures: Picture[] = [];
+    author: string = '@test_user';
     upload: Picture = {
         url: '',
         description: '',
@@ -55,6 +55,17 @@ export class AppComponent implements OnInit {
             const oldPicture = this.pictures.find(picture => picture._id === updatedPicture._id);
             const index = _.indexOf(this.pictures, oldPicture);
             this.pictures.splice(index, 1, updatedPicture);
+        });
+    }
+    toggleLikes(update: Update): void {
+        const id = update.id;
+        const picture = this.pictures.find(pic => pic._id === id);
+        let likedBy = picture.likedBy;
+        const index = _.indexOf(picture.likedBy, this.author);
+        (index === -1) ? likedBy.push(this.author) : _.pull(likedBy, this.author);
+        this.updatePicture({
+            id,
+            likedBy
         });
     }
     removePicture(id: string): void {

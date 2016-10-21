@@ -22,7 +22,9 @@ export class BrickComponent implements OnInit {
     @Input() description: string;
     @Input() author: string;
     @Input() thumbnail: string;
+    @Input() likedBy: string[];
     @Output() put: EventEmitter < Update > = new EventEmitter <Update>();
+    @Output() like: EventEmitter < Update > = new EventEmitter <Update>();
     @Output() remove: EventEmitter < string > = new EventEmitter < string > ();
     update: Update;
     constructor() {}
@@ -38,6 +40,9 @@ export class BrickComponent implements OnInit {
     onUpdate(): void {
         this.put.emit(this.update);
         this.close();
+    }
+    onLike(): void {
+        this.like.emit({id: this.id});
     }
     onRemove(): void {
         this.remove.emit(this.id);

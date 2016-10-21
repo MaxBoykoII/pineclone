@@ -16,6 +16,7 @@ var AppComponent = (function () {
     function AppComponent(_pictureService) {
         this._pictureService = _pictureService;
         this.pictures = [];
+        this.author = '@test_user';
         this.upload = {
             url: '',
             description: '',
@@ -49,6 +50,17 @@ var AppComponent = (function () {
             var oldPicture = _this.pictures.find(function (picture) { return picture._id === updatedPicture._id; });
             var index = _.indexOf(_this.pictures, oldPicture);
             _this.pictures.splice(index, 1, updatedPicture);
+        });
+    };
+    AppComponent.prototype.toggleLikes = function (update) {
+        var id = update.id;
+        var picture = this.pictures.find(function (pic) { return pic._id === id; });
+        var likedBy = picture.likedBy;
+        var index = _.indexOf(picture.likedBy, this.author);
+        (index === -1) ? likedBy.push(this.author) : _.pull(likedBy, this.author);
+        this.updatePicture({
+            id: id,
+            likedBy: likedBy
         });
     };
     AppComponent.prototype.removePicture = function (id) {

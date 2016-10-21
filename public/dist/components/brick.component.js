@@ -13,6 +13,7 @@ var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var BrickComponent = (function () {
     function BrickComponent() {
         this.put = new core_1.EventEmitter();
+        this.like = new core_1.EventEmitter();
         this.remove = new core_1.EventEmitter();
     }
     BrickComponent.prototype.open = function () {
@@ -24,6 +25,9 @@ var BrickComponent = (function () {
     BrickComponent.prototype.onUpdate = function () {
         this.put.emit(this.update);
         this.close();
+    };
+    BrickComponent.prototype.onLike = function () {
+        this.like.emit({ id: this.id });
     };
     BrickComponent.prototype.onRemove = function () {
         this.remove.emit(this.id);
@@ -57,9 +61,17 @@ var BrickComponent = (function () {
         __metadata('design:type', String)
     ], BrickComponent.prototype, "thumbnail", void 0);
     __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], BrickComponent.prototype, "likedBy", void 0);
+    __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], BrickComponent.prototype, "put", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', core_1.EventEmitter)
+    ], BrickComponent.prototype, "like", void 0);
     __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)

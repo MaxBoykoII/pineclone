@@ -20,14 +20,13 @@ p {
 
 .like {
     float: right;
-    width: 25px;
+    width: 40px;
     height: 25px;
+    padding: 0 2px;
     display: flex;
     background-color: $light-yellow;
-    justify-content: center;
-    .glyphicon-star {
-        align-self: center
-    }
+    justify-content: space-between;
+    align-items: center;
 }
 
 img {
