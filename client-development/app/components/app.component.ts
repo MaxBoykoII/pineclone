@@ -9,9 +9,16 @@ import { Picture } from '../interfaces/picture';
 import { Update } from '../interfaces/update';
 
 /*
+ * Import User interface and Auth Service
+ */
+import { User } from '../interfaces/user';
+import { AuthService } from '../services/auth.service';
+
+/*
  * Import third-party modal component
  */
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 
 @Component({
     selector: 'app',
@@ -20,6 +27,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 export class AppComponent implements OnInit {
     pictures: Picture[] = [];
+    user: User = null;
     author: string = '@test_user';
     upload: Picture = {
         url: '',
@@ -27,7 +35,7 @@ export class AppComponent implements OnInit {
         author: '@test_user',
         thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
     };
-    constructor(private _pictureService: PictureService) {}
+    constructor(private _pictureService: PictureService, private _authService: AuthService) {}
     @ViewChild('picModal')
     modal: ModalComponent;
 
@@ -62,7 +70,8 @@ export class AppComponent implements OnInit {
         const picture = this.pictures.find(pic => pic._id === id);
         let likedBy = picture.likedBy;
         const index = _.indexOf(picture.likedBy, this.author);
-        (index === -1) ? likedBy.push(this.author) : _.pull(likedBy, this.author);
+        (index === -1) ? likedBy.push(this.author): _.pull(likedBy, this.author);
+
         this.updatePicture({
             id,
             likedBy
@@ -79,6 +88,10 @@ export class AppComponent implements OnInit {
             if (!_.isEqual(this.pictures, pictures)) {
                 this.pictures = pictures
             }
+        });
+        this._authService.fetch().subscribe(user => {
+            this.user = user
+            console.log(this.user);
         });
     }
 }

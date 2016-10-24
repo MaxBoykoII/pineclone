@@ -16,6 +16,7 @@ var http_1 = require('@angular/http');
 var app_component_1 = require('./components/app.component');
 var brick_component_1 = require('./components/brick.component');
 var picture_service_1 = require('./services/picture.service');
+var auth_service_1 = require('./services/auth.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -31,7 +32,7 @@ var AppModule = (function () {
                 app_component_1.AppComponent,
                 brick_component_1.BrickComponent
             ],
-            providers: [picture_service_1.PictureService],
+            providers: [picture_service_1.PictureService, auth_service_1.AuthService],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

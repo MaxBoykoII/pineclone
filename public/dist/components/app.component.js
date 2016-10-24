@@ -11,11 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var _ = require('lodash');
 var picture_service_1 = require('../services/picture.service');
+var auth_service_1 = require('../services/auth.service');
 var ng2_bs3_modal_1 = require('ng2-bs3-modal/ng2-bs3-modal');
 var AppComponent = (function () {
-    function AppComponent(_pictureService) {
+    function AppComponent(_pictureService, _authService) {
         this._pictureService = _pictureService;
+        this._authService = _authService;
         this.pictures = [];
+        this.user = null;
         this.author = '@test_user';
         this.upload = {
             url: '',
@@ -76,6 +79,10 @@ var AppComponent = (function () {
                 _this.pictures = pictures;
             }
         });
+        this._authService.fetch().subscribe(function (user) {
+            _this.user = user;
+            console.log(_this.user);
+        });
     };
     __decorate([
         core_1.ViewChild('picModal'), 
@@ -87,7 +94,7 @@ var AppComponent = (function () {
             templateUrl: './templates/app.component.html',
             styleUrls: ['./css/app.component.css']
         }), 
-        __metadata('design:paramtypes', [picture_service_1.PictureService])
+        __metadata('design:paramtypes', [picture_service_1.PictureService, auth_service_1.AuthService])
     ], AppComponent);
     return AppComponent;
 }());

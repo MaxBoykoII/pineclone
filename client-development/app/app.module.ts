@@ -10,6 +10,7 @@ import { AppComponent } from './components/app.component';
 import { BrickComponent } from './components/brick.component';
 
 import { PictureService } from './services/picture.service';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
     imports: [
@@ -22,7 +23,7 @@ import { PictureService } from './services/picture.service';
         AppComponent,
         BrickComponent
     ],
-    providers: [PictureService],
+    providers: [PictureService, AuthService],
     bootstrap: [AppComponent]
 })
 
