@@ -6,5 +6,7 @@ module.exports = (app) => {
 
     passport.serializeUser((user, done) => done(null, user));
     passport.deserializeUser((user, done) => done(null, user));
+    
+    require('./strategies/twitter.strategy')();
 
 };

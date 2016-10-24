@@ -19,8 +19,10 @@ require('./server-side/config/passport')(app);
 
 app.use(express.static(__dirname + '/public'));
 
+var authRouter = require('./server-side/routes/auth');
 var apiRouter = require('./server-side/routes/api');
 
+app.use('/auth', authRouter);
 app.use('/api', apiRouter);
 
 process.on('uncaughtException', err => {
