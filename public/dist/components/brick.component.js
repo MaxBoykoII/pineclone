@@ -65,6 +65,10 @@ var BrickComponent = (function () {
         __metadata('design:type', Array)
     ], BrickComponent.prototype, "likedBy", void 0);
     __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Object)
+    ], BrickComponent.prototype, "user", void 0);
+    __decorate([
         core_1.Output(), 
         __metadata('design:type', core_1.EventEmitter)
     ], BrickComponent.prototype, "put", void 0);

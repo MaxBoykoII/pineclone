@@ -1,9 +1,10 @@
 import { Component, Input, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
 
 /*
- * import picture interface
+ * import picture and user interfaces
  */
 import { Update } from '../interfaces/update';
+import { User } from '../interfaces/user';
 
 /*
  * Import third-party modal component
@@ -23,6 +24,7 @@ export class BrickComponent implements OnInit {
     @Input() author: string;
     @Input() thumbnail: string;
     @Input() likedBy: string[];
+    @Input() user: User;
     @Output() put: EventEmitter < Update > = new EventEmitter <Update>();
     @Output() like: EventEmitter < Update > = new EventEmitter <Update>();
     @Output() remove: EventEmitter < string > = new EventEmitter < string > ();

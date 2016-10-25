@@ -48,14 +48,9 @@ export class AppComponent implements OnInit {
     addPicture() {
         this._pictureService.addPicture(this.upload).subscribe(picture => {
             this.pictures.push(picture)
-            console.log('created picture is ', picture);
         });
-        this.upload = {
-            url: '',
-            description: '',
-            author: '@test_user',
-            thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
-        };
+        this.upload.url = '';
+        this.upload.description = '';
         this.close();
     }
     updatePicture(update: Update): void {
@@ -69,8 +64,8 @@ export class AppComponent implements OnInit {
         const id = update.id;
         const picture = this.pictures.find(pic => pic._id === id);
         let likedBy = picture.likedBy;
-        const index = _.indexOf(picture.likedBy, this.author);
-        (index === -1) ? likedBy.push(this.author): _.pull(likedBy, this.author);
+        const index = _.indexOf(picture.likedBy, this.user.username);
+        (index === -1) ? likedBy.push(this.user.username): _.pull(likedBy, this.user.username);
 
         this.updatePicture({
             id,
@@ -86,12 +81,13 @@ export class AppComponent implements OnInit {
 
         this._pictureService.getPictures().subscribe(pictures => {
             if (!_.isEqual(this.pictures, pictures)) {
-                this.pictures = pictures
+                this.pictures = pictures;
             }
         });
         this._authService.fetch().subscribe(user => {
             this.user = user
-            console.log(this.user);
+            this.upload.author = user.username;
+            this.upload.thumbnail = user.image;
         });
     }
 }

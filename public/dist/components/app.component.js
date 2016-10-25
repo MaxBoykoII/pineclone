@@ -37,14 +37,9 @@ var AppComponent = (function () {
         var _this = this;
         this._pictureService.addPicture(this.upload).subscribe(function (picture) {
             _this.pictures.push(picture);
-            console.log('created picture is ', picture);
         });
-        this.upload = {
-            url: '',
-            description: '',
-            author: '@test_user',
-            thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
-        };
+        this.upload.url = '';
+        this.upload.description = '';
         this.close();
     };
     AppComponent.prototype.updatePicture = function (update) {
@@ -59,8 +54,8 @@ var AppComponent = (function () {
         var id = update.id;
         var picture = this.pictures.find(function (pic) { return pic._id === id; });
         var likedBy = picture.likedBy;
-        var index = _.indexOf(picture.likedBy, this.author);
-        (index === -1) ? likedBy.push(this.author) : _.pull(likedBy, this.author);
+        var index = _.indexOf(picture.likedBy, this.user.username);
+        (index === -1) ? likedBy.push(this.user.username) : _.pull(likedBy, this.user.username);
         this.updatePicture({
             id: id,
             likedBy: likedBy
@@ -81,7 +76,8 @@ var AppComponent = (function () {
         });
         this._authService.fetch().subscribe(function (user) {
             _this.user = user;
-            console.log(_this.user);
+            _this.upload.author = user.username;
+            _this.upload.thumbnail = user.image;
         });
     };
     __decorate([
