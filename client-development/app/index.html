@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
 
 <head>
     <meta charset="UTF8">
@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <app></app>
+    <app>Loading...</app>
 
     <!-- Polyfill(s) for older browsers -->
     <script src="./node_modules/core-js/client/shim.min.js"></script>
@@ -23,22 +23,13 @@
     <!-- Load Bootstrap and jquery -->
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    
+
     <!-- Load System js and its configuration -->
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="./systemjs.config.js"></script>
     <script>
         System.import('app').catch(function(err) {
             console.error(err);
-        });
-    </script>
-    <!-- Tooltips -->
-    <script>
-        $(function() {
-            console.log('setting up tooltips...');
-            $('[data-toggle="tooltip"]').tooltip({
-                template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'
-            });
         });
     </script>
 </body>

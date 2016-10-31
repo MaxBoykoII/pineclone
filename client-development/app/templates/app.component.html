@@ -48,5 +48,5 @@
 </modal>
 <div id="gallery" class="container">
   <brick class="gallery-item" *ngFor="let picture of pictures" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [user]="user"[thumbnail]="picture.thumbnail" [likedBy]="picture.likedBy" (put)="updatePicture($event)" (like)="toggleLikes($event)"
-    (remove)="removePicture($event)"></brick>
+    (remove)="removePicture($event)">Loading pictures...</brick>
 </div>

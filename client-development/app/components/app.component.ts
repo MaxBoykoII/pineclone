@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 
+
 /*
  * Import picture service, the picture interface, and the update interface
  */
@@ -78,7 +79,6 @@ export class AppComponent implements OnInit {
         })
     }
     ngOnInit(): void {
-
         this._pictureService.getPictures().subscribe(pictures => {
             if (!_.isEqual(this.pictures, pictures)) {
                 this.pictures = pictures;

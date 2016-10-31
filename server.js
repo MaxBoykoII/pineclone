@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var session = require('cookie-session');
 var mongoose = require('mongoose');
 
-var db = mongoose.connect('mongodb://maxboyko-pinterest-clone-3739255');
+var db = mongoose.connect(process.env.db||'mongodb://maxboyko-pinterest-clone-3739255');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
