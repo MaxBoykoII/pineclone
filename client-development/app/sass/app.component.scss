@@ -1,6 +1,4 @@
 @import 'variables';
-
-
 nav {
     background-color: $dark-brown;
     a {
@@ -11,6 +9,11 @@ nav {
             background: $medium-green !important;
         }
     }
+}
+
+.dropdown-menu a {
+    color: $dark-brown !important;
+    font-weight: 300;
 }
 
 #gallery {

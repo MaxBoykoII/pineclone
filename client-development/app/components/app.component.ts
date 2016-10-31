@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
         author: '@test_user',
         thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
     };
+    choice: string = 'createdOn';
     constructor(private _pictureService: PictureService, private _authService: AuthService) {}
     @ViewChild('picModal')
     modal: ModalComponent;

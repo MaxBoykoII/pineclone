@@ -7,6 +7,10 @@ nav {
       color: #3E260E !important;
       background: #90C4AB !important; }
 
+.dropdown-menu a {
+  color: #3E260E !important;
+  font-weight: 300; }
+
 #gallery {
   display: -webkit-box;
   display: -webkit-flex;

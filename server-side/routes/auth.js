@@ -27,4 +27,10 @@ router.route('/user')
         }
     });
 
+router.route('/logout')
+    .get((req, res) => {
+        req.logout();
+        res.redirect('/');
+    });
+
 module.exports = router;

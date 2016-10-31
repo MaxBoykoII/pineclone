@@ -26,6 +26,7 @@ var AppComponent = (function () {
             author: '@test_user',
             thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
         };
+        this.choice = 'createdOn';
     }
     AppComponent.prototype.open = function () {
         this.modal.open();

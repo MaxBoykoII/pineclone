@@ -15,6 +15,7 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 var app_component_1 = require('./components/app.component');
 var brick_component_1 = require('./components/brick.component');
+var sort_pipe_1 = require('./pipes/sort.pipe');
 var picture_service_1 = require('./services/picture.service');
 var auth_service_1 = require('./services/auth.service');
 var AppModule = (function () {
@@ -30,7 +31,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                brick_component_1.BrickComponent
+                brick_component_1.BrickComponent,
+                sort_pipe_1.SortPipe
             ],
             providers: [picture_service_1.PictureService, auth_service_1.AuthService],
             bootstrap: [app_component_1.AppComponent]
