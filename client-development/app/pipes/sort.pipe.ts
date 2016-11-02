@@ -27,7 +27,7 @@ export class SortPipe implements PipeTransform {
                 break;
             case 'likes':
                 copy.sort((pic1, pic2) => {
-                    return pic1.likedBy.length - pic2.likedBy.length;
+                    return pic2.likedBy.length - pic1.likedBy.length;
                 });
                 break;
         }
