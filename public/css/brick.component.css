@@ -44,9 +44,13 @@ p {
       -ms-flex-align: center;
           align-items: center; }
 
+.full-screen {
+  cursor: pointer; }
+
 img {
   width: 100%;
   height: auto;
+  max-height: 80%;
   float: left; }
 
 .bottom {

@@ -32,7 +32,8 @@ var SortPipe = (function () {
     };
     SortPipe = __decorate([
         core_1.Pipe({
-            name: 'sort'
+            name: 'sort',
+            pure: false
         }), 
         __metadata('design:paramtypes', [])
     ], SortPipe);

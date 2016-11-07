@@ -25,13 +25,16 @@ export class BrickComponent implements OnInit {
     @Input() thumbnail: string;
     @Input() likedBy: string[];
     @Input() user: User;
-    @Output() put: EventEmitter < Update > = new EventEmitter <Update>();
-    @Output() like: EventEmitter < Update > = new EventEmitter <Update>();
+    @Output() put: EventEmitter < Update > = new EventEmitter < Update > ();
+    @Output() like: EventEmitter < Update > = new EventEmitter < Update > ();
     @Output() remove: EventEmitter < string > = new EventEmitter < string > ();
     update: Update;
     constructor() {}
     @ViewChild('editModal')
     modal: ModalComponent;
+
+    @ViewChild('viewer')
+    viewer: ModalComponent;
 
     open(): void {
         this.modal.open();
@@ -44,7 +47,9 @@ export class BrickComponent implements OnInit {
         this.close();
     }
     onLike(): void {
-        this.like.emit({id: this.id});
+        this.like.emit({
+            id: this.id
+        });
     }
     onRemove(): void {
         this.remove.emit(this.id);

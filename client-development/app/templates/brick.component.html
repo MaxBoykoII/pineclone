@@ -3,13 +3,13 @@
         <button *ngIf="user? user.username === author : false" type="button" class="settings btn" (click)="open()"><i class="fa fa-cog" aria-hidden="true"></i> <span class="sr-only">Settings</span></button>
     </div>
     <div class="center">
-        <img [src]="url" class="img-responsive" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" />
+        <a class="full-screen" (click)="viewer.open()"><img [src]="url" class="img-responsive" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" /></a>
         <p>{{description}}</p>
     </div>
     <div class="bottom">
         <img [src]="thumbnail" alt="profile picture" class="img-responsive img-thumbnail profile-img" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" data-toggle="tooltip" data-placement="bottom"
             [title]="author" />
-        <button type="button" class="btn like" (click)="onLike()" [disabled] = "user? !user.authenticated : true">{{likedBy.length}}<i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
+        <button type="button" class="btn like" (click)="onLike()" [disabled]="user? !user.authenticated : true">{{likedBy.length}}<i class="fa fa-thumbs-up" aria-hidden="true"></i></button>
     </div>
 </div>
 
@@ -34,4 +34,10 @@
             <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="onUpdate()">Save</button>
         </modal-footer>
     </form>
+</modal>
+
+<modal #viewer cssClass="full-screen-modal">
+    <modal-body>
+        <img [src]="url" class="responsive" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" />
+    </modal-body>
 </modal>

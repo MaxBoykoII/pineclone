@@ -9,7 +9,8 @@ import { Picture } from '../interfaces/picture';
  */
 
 @Pipe({
-    name: 'sort'
+    name: 'sort',
+    pure: false
 })
 
 export class SortPipe implements PipeTransform {

@@ -27,7 +27,9 @@ var BrickComponent = (function () {
         this.close();
     };
     BrickComponent.prototype.onLike = function () {
-        this.like.emit({ id: this.id });
+        this.like.emit({
+            id: this.id
+        });
     };
     BrickComponent.prototype.onRemove = function () {
         this.remove.emit(this.id);
@@ -84,6 +86,10 @@ var BrickComponent = (function () {
         core_1.ViewChild('editModal'), 
         __metadata('design:type', ng2_bs3_modal_1.ModalComponent)
     ], BrickComponent.prototype, "modal", void 0);
+    __decorate([
+        core_1.ViewChild('viewer'), 
+        __metadata('design:type', ng2_bs3_modal_1.ModalComponent)
+    ], BrickComponent.prototype, "viewer", void 0);
     BrickComponent = __decorate([
         core_1.Component({
             selector: 'brick',

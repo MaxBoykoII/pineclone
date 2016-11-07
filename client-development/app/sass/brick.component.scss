@@ -1,17 +1,18 @@
 @import 'variables';
-
 .brick {
-     background-color: $medium-brown;
-     padding: 1em;
-     border-radius: 5%;
-     box-shadow: 10px 12px 32px -3px rgba(116,70,19,1);
+    background-color: $medium-brown;
+    padding: 1em;
+    border-radius: 5%;
+    box-shadow: 10px 12px 32px -3px rgba(116, 70, 19, 1);
 }
+
 .top {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     margin-bottom: 0.5em;
 }
+
 p {
     text-align: center;
     display: block;
@@ -29,16 +30,21 @@ p {
     align-items: center;
 }
 
+.full-screen {
+    cursor: pointer;
+}
+
 img {
     width: 100%;
     height: auto;
+    max-height: 80%;
     float: left;
 }
 
 .bottom {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .profile-img {
