@@ -19,7 +19,7 @@ var AppComponent = (function () {
         this._authService = _authService;
         this.pictures = [];
         this.user = null;
-        this.author = '@test_user';
+        this.author = null;
         this.upload = {
             url: '',
             description: '',
@@ -27,6 +27,7 @@ var AppComponent = (function () {
             thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
         };
         this.choice = 'createdOn';
+        this.type = 'all';
     }
     AppComponent.prototype.open = function () {
         this.modal.open();
@@ -77,6 +78,7 @@ var AppComponent = (function () {
         });
         this._authService.fetch().subscribe(function (user) {
             _this.user = user;
+            _this.author = user.username;
             _this.upload.author = user.username;
             _this.upload.thumbnail = user.image;
         });

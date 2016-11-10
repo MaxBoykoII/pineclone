@@ -29,7 +29,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 export class AppComponent implements OnInit {
     pictures: Picture[] = [];
     user: User = null;
-    author: string = '@test_user';
+    author: string = null;
     upload: Picture = {
         url: '',
         description: '',
@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
         thumbnail: 'https://abs.twimg.com/sticky/default_profile_images/default_profile_3_normal.png'
     };
     choice: string = 'createdOn';
+    type: string = 'all';
     constructor(private _pictureService: PictureService, private _authService: AuthService) {}
     @ViewChild('picModal')
     modal: ModalComponent;
@@ -87,6 +88,7 @@ export class AppComponent implements OnInit {
         });
         this._authService.fetch().subscribe(user => {
             this.user = user
+            this.author = user.username;
             this.upload.author = user.username;
             this.upload.thumbnail = user.image;
         });

@@ -15,13 +15,20 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li *ngIf="user? user.authenticated : false"><a href="#" (click)="open()">Add a picture</a></li>
-
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#" (click)="choice = 'author'">by author <i *ngIf="choice === 'author'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
             <li><a href="#" (click)="choice = 'likes'">by likes <i *ngIf="choice === 'likes'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
             <li><a href="#" (click)="choice = 'createdOn'">by date posted <i *ngIf="choice === 'createdOn'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+        <li class="dropdown" *ngIf="user? user.authenticated : false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Showing<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" (click)="type = 'mine'">my pictures <i *ngIf="type === 'mine'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="type = 'not mine'">pictures posted by other users <i *ngIf="type === 'not mine'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="type = 'all'">all pictures <i *ngIf="type === 'all'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
           </ul>
         </li>
       </ul>
@@ -57,6 +64,6 @@
   </form>
 </modal>
 <div id="gallery" class="container">
-  <brick class="gallery-item" *ngFor="let picture of pictures | sort : choice" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [user]="user" [thumbnail]="picture.thumbnail" [likedBy]="picture.likedBy"
+  <brick class="gallery-item" *ngFor="let picture of pictures | sort : choice | whose: type: author" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [user]="user" [thumbnail]="picture.thumbnail" [likedBy]="picture.likedBy"
     (put)="updatePicture($event)" (like)="toggleLikes($event)" (remove)="removePicture($event)"></brick>
 </div>

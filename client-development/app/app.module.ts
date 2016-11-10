@@ -10,6 +10,7 @@ import { AppComponent } from './components/app.component';
 import { BrickComponent } from './components/brick.component';
 
 import { SortPipe } from './pipes/sort.pipe';
+import { AuthorPipe } from './pipes/author.pipe';
 
 import { PictureService } from './services/picture.service';
 import { AuthService } from './services/auth.service';
@@ -24,7 +25,8 @@ import { AuthService } from './services/auth.service';
     declarations: [
         AppComponent,
         BrickComponent,
-        SortPipe
+        SortPipe,
+        AuthorPipe
     ],
     providers: [PictureService, AuthService],
     bootstrap: [AppComponent]
