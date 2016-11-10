@@ -16,6 +16,14 @@ nav {
     font-weight: 300;
 }
 
+.navbar-nav>.open>a {
+    background-color: $dark-brown;
+    &:hover {
+        color: $dark-brown !important;
+        background: $medium-green !important;
+    }
+}
+
 #gallery {
     display: flex;
     flex-flow: row wrap;
