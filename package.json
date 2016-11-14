@@ -1,6 +1,6 @@
 {
   "name": "pinterest-clone",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "My solution to freeCodeCamp's build a pinterest clone challenge",
   "main": "server.js",
   "scripts": {
