@@ -36,8 +36,11 @@
     </form>
 </modal>
 
-<modal #viewer cssClass="full-screen-modal">
+<modal #viewer cssClass="modal-full">
+    <modal-header [show-close]="true">
+        <h4 class="modal-title text-center">{{description}}</h4>
+    </modal-header>
     <modal-body>
-        <img [src]="url" class="responsive" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" />
+        <img [src]="url" onError="this.src='https://cdn.hyperdev.com/us-east-1%3A60e6615e-7d9e-47ac-903b-3b4b47372e42%2Fplaceholder.png'" />
     </modal-body>
 </modal>
