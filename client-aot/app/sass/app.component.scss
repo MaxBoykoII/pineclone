@@ -1,0 +1,38 @@
+@import 'variables';
+nav {
+    background-color: $dark-brown;
+    a {
+        color: white !important;
+        font-weight: 600;
+        &:hover {
+            color: $dark-brown !important;
+            background: $medium-green !important;
+        }
+    }
+}
+
+.dropdown-menu a {
+    color: $dark-brown !important;
+    font-weight: 300;
+}
+
+.navbar-nav>.open>a {
+    background-color: $dark-brown;
+    &:hover {
+        color: $dark-brown !important;
+        background: $medium-green !important;
+    }
+}
+
+#gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.gallery-item {
+    flex: 0 1 200px;
+    max-height: 800px;
+    margin: 0.25em 0.25em;
+}

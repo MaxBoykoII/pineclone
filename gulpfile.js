@@ -50,8 +50,7 @@ gulp.task('component:scss', () => {
 });
 
 gulp.task('build', () => {
-    runSequence('clean',
-        ['copy', 'component:scss'],
+    runSequence('clean', ['copy', 'component:scss'],
         'angular-dependencies',
         'compile:ts');
 });
@@ -65,15 +64,30 @@ gulp.task('lint', () => {
         }));
 });
 
-gulp.task('server-tests', () =>{
-     return gulp.src(['server-side/tests/*.js'], { read: false })
-    .pipe($.mocha({
-      reporter: 'spec',
-      globals: {
-        should: require('expect.js')
-      }
-    }));
+gulp.task('server-tests', () => {
+    return gulp.src(['server-side/tests/*.js'], {
+            read: false
+        })
+        .pipe($.mocha({
+            reporter: 'spec',
+            globals: {
+                should: require('expect.js')
+            }
+        }));
 })
+
+/*
+ * A special task for compile scss before ngc command is run
+ */
+ 
+gulp.task('aot-css', () => {
+    return gulp.src(['./client-aot/app/sass/**/*.scss'])
+        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.autoprefixer({
+            browsers: ['last 3 version', '>1%', 'iOS 7']
+        }))
+        .pipe(gulp.dest('./client-aot/app/components/css'));
+});
 
 /*gulp.task('build:bundle', () => {
     return browserify('./public/dist/main.js', {

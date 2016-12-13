@@ -1,8 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { indexOf } from 'lodash-es/indexOf';
-import { pull } from 'lodash-es/pull';
-import { isEqual } from 'lodash-es/isEqual';
-
+import * as _ from "lodash";
 
 /*
  * Import picture service, the picture interface, and the update interface
@@ -61,7 +58,7 @@ export class AppComponent implements OnInit {
     updatePicture(update: Update): void {
         this._pictureService.updatePicture(update).subscribe(updatedPicture => {
             const oldPicture = this.pictures.find(picture => picture._id === updatedPicture._id);
-            const index = indexOf(this.pictures, oldPicture);
+            const index = this.pictures.indexOf(oldPicture);
             this.pictures.splice(index, 1, updatedPicture);
         });
     }
@@ -69,8 +66,8 @@ export class AppComponent implements OnInit {
         const id = update.id;
         const picture = this.pictures.find(pic => pic._id === id);
         let likedBy = picture.likedBy;
-        const index = indexOf(picture.likedBy, this.user.username);
-        (index === -1) ? likedBy.push(this.user.username): pull(likedBy, this.user.username);
+        const index = picture.likedBy.indexOf(this.user.username);
+        (index === -1) ? likedBy.push(this.user.username): _.pull(likedBy, this.user.username);
 
         this.updatePicture({
             id,
@@ -79,12 +76,13 @@ export class AppComponent implements OnInit {
     }
     removePicture(id: string): void {
         this._pictureService.removePicture(id).subscribe(removedPicture => {
-            pull(this.pictures, removedPicture);
+            _.pull(this.pictures, removedPicture);
         })
     }
     ngOnInit(): void {
         this._pictureService.getPictures().subscribe(pictures => {
-            if (isEqual(this.pictures, pictures)) {
+            if (!_.isEqual(this.pictures, pictures)) {
+                console.log('got here!');
                 this.pictures = pictures;
             }
         });

@@ -1,0 +1,69 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Pineclone</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li *ngIf="user? user.authenticated : false"><a href="#" (click)="open()">Add a picture</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" (click)="choice = 'author'">by author <i *ngIf="choice === 'author'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="choice = 'likes'">by likes <i *ngIf="choice === 'likes'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="choice = 'createdOn'">by date posted <i *ngIf="choice === 'createdOn'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+        <li class="dropdown" *ngIf="user? user.authenticated : false">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Showing<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#" (click)="type = 'mine'">my pictures <i *ngIf="type === 'mine'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="type = 'not mine'">pictures posted by other users <i *ngIf="type === 'not mine'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#" (click)="type = 'all'">all pictures <i *ngIf="type === 'all'" class="fa fa-check-circle" aria-hidden="true"></i></a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="user?!user.authenticated:true"><a href="/auth/twitter"><i class="fa fa-twitter"></i></a></li>
+        <li *ngIf="user? user.authenticated:false"><a href="/auth/logout">Logout</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+<modal #picModal>
+  <form #modalForm="ngForm">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Add a picture</h4>
+    </modal-header>
+    <modal-body>
+      <div class="form-group">
+        <label for="firstName">URL</label>
+        <input type="text" class="form-control" required [(ngModel)]="upload.url" name="url" id="url">
+      </div>
+      <div class="form-group">
+        <label for="lastName">Description</label>
+        <input type="text" class="form-control" required [(ngModel)]="upload.description" name="description" id="description">
+      </div>
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-default" data-dismiss="modal" (click)="picModal.dismiss()">Cancel</button>
+      <button type="button" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="addPicture()">Save</button>
+    </modal-footer>
+  </form>
+</modal>
+<div id="gallery" class="container">
+  <brick class="gallery-item" *ngFor="let picture of pictures | sort : choice | whose: type: author" [id]="picture._id" [url]="picture.url" [description]="picture.description" [author]="picture.author" [user]="user" [thumbnail]="picture.thumbnail" [likedBy]="picture.likedBy"
+    (put)="updatePicture($event)" (like)="toggleLikes($event)" (remove)="removePicture($event)"></brick>
+</div>
